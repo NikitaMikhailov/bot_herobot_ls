@@ -1,1 +1,1 @@
-web: python bot_ls.py
+web: python bot_small.py
