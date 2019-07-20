@@ -116,7 +116,7 @@ vk.messages.send(
 def goroscop1():
     spisok_znakov=['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces']
     for i in range (0,12):
-        filegor=open(spisok_znakov[i]+'.txt','w')
+        filegor=open('resurses/goroskop_files/'+spisok_znakov[i]+'.txt','w')
         filegor.write(((bs4.BeautifulSoup(requests.get("http://astroscope.ru/horoskop/ejednevniy_goroskop/" + spisok_znakov[i] + ".html").text,"html.parser").find('div', 'col-12')).getText().lstrip()))
         filegor.close()
 
@@ -158,11 +158,11 @@ def mainfunc():
                     flaggorod1 = False
 
 
-                    s=open('history_ls.txt','a')
+                    s=open('logs_ls.txt','a')
                     s.write(last_name + ' *_* ' + first_name + ' *_* ' + str(event.obj.from_id) + ' *_* ' + str(event.chat_id) + ' *_* ' + text_osn + '\n')
                     s.close()
 
-                    f = open('goroda1.txt', 'r')
+                    f = open('resurses/goroda1.txt', 'r')
                     for i in f:
                         if str(event.obj.peer_id) == i[:-1:]:
                             flaggorod1 = True
@@ -170,9 +170,9 @@ def mainfunc():
 
                     if event.obj.text == 'давай сыграем в города' and flaggorod1 != True:
 
-                        f = open('goroda1.txt', 'a')
+                        f = open('resurses/goroda1.txt', 'a')
                         f.write(str(event.obj.peer_id) + '\n')
-                        f1 = open(str(event.obj.peer_id) + '.txt', 'w')
+                        f1 = open('resurses/goroda_files/'+str(event.obj.peer_id) + '.txt', 'w')
                         f1.close()
                         f.close()
 
@@ -229,7 +229,7 @@ def mainfunc():
 
                     elif event.obj.text in dict8 and flaggoroscop is True:
                         zodiak = dict8[event.obj.text]
-                        f=open(zodiak+'.txt','r')
+                        f=open('resurses/goroskop_files/'+zodiak+'.txt','r')
                         goroskp=f.read()
                         f.close()
                         vk.messages.send(  # Отправляем собщение
@@ -270,7 +270,7 @@ def mainfunc():
                         except:
                             print('еще нет файла 1')
 
-                        f = open('goroda1.txt', 'r')
+                        f = open('resurses/goroda1.txt', 'r')
                         r = ''
                         for line in f:
                             if line[:-1:] == str(event.obj.peer_id):
@@ -287,8 +287,8 @@ def mainfunc():
                         # print(r2)
                         r = '\n'.join(r2) + '\n'
                         # print(r)
-                        os.remove('goroda1.txt')
-                        f = open('goroda1.txt', 'w')
+                        os.remove('resurses/goroda1.txt')
+                        f = open('resurses/goroda1.txt', 'w')
                         f.write(r)
                         f.close()
 
@@ -308,7 +308,7 @@ def mainfunc():
                         flaggorod2 = False
                         flaggorod3 = False
                         flaggorod5 = False
-                        f1 = open(str(event.obj.peer_id) + '.txt', 'r')
+                        f1 = open('resurses/goroda_files/'+str(event.obj.peer_id) + '.txt', 'r')
                         chet = 0
                         for i in f1:
                             chet += 1
@@ -317,7 +317,7 @@ def mainfunc():
                         f1.close()
 
                         if chet != 0:
-                            for linenum, line in enumerate(open(str(event.obj.peer_id) + '.txt', 'r')):
+                            for linenum, line in enumerate(open('resurses/goroda_files/'+str(event.obj.peer_id) + '.txt', 'r')):
                                 if linenum == chet - 1:
                                     poslgorod = (line.strip())
                             if poslgorod[-1] == 'ь' or poslgorod[-1] == 'ы' or poslgorod[-1] == 'ъ' or poslgorod[
@@ -331,19 +331,19 @@ def mainfunc():
                         else:
                             flaggorod5 = True
 
-                        f = open('cities.txt', 'r')
+                        f = open('resurses/cities.txt', 'r')
                         for i in f:
                             if event.obj.text == i[:-1:].lower():
                                 flaggorod2 = True
                         f.close()
-                        f = open('cityman.txt', 'r')
+                        f = open('resurses/cityman.txt', 'r')
                         for i in f:
                             if event.obj.text == i[:-1:].lower():
                                 flaggorod2 = True
                         f.close()
                         if flaggorod2 is True and flaggorod3 is not True and flaggorod5 is True:
-                            f1 = open(str(event.obj.peer_id) + '.txt', 'a')
-                            f1.write(str(event.obj.text + '\n'))
+                            f1 = open('resurses/goroda_files/'+str(event.obj.peer_id) + '.txt', 'a')
+                            f1.write('resurses/goroda_files/'+str(event.obj.text + '\n'))
                             f1.close()
                             letter = str(event.obj.text[-1])
                             if letter == 'ь' or letter == 'ы' or letter == 'ъ':
@@ -353,10 +353,10 @@ def mainfunc():
                                 while flgorod is False:
                                     # flaggorod31=False
                                     randgorod = random.randint(0, 10960)
-                                    for linenum, line in enumerate(open('cityman.txt', 'r')):
+                                    for linenum, line in enumerate(open('resurses/cityman.txt', 'r')):
                                         if linenum == randgorod:
                                             gorod = (line.strip())
-                                    f1 = open(str(event.obj.peer_id) + '.txt', 'r')
+                                    f1 = open('resurses/goroda_files/'+str(event.obj.peer_id) + '.txt', 'r')
                                     if gorod[-1] == '\n':
                                         gorod = gorod[:-1:]
 
@@ -368,7 +368,7 @@ def mainfunc():
                                                 flgorod = True
 
                                 f1.close()
-                                f1 = open(str(event.obj.peer_id) + '.txt', 'a')
+                                f1 = open('resurses/goroda_files/'+str(event.obj.peer_id) + '.txt', 'a')
                                 f1.write(gorod.lower() + '\n')
                                 f1.close()
                                 ranom = random.randint(0, 4)
@@ -378,7 +378,7 @@ def mainfunc():
                                         posllet = gorod[-2].upper()
                                     else:
                                         posllet = gorod[-1].upper()
-                                    for linenum, line in enumerate(open('city2.txt', 'r')):
+                                    for linenum, line in enumerate(open('resurses/city2.txt', 'r')):
                                         if line[:dlina:] == gorod:
                                             link = line.split('|')
                                             try:
@@ -470,7 +470,7 @@ def mainfunc():
                                     message='ты меня победил, я больше не знаю городов'
                                 )
 
-                                f = open('goroda1.txt', 'r')
+                                f = open('resurses/goroda1.txt', 'r')
                                 r = ''
                                 for line in f:
                                     if line[:-1:] == str(event.obj.peer_id):
@@ -478,10 +478,10 @@ def mainfunc():
                                     else:
                                         r += line + '\n'
                                 f.close()
-                                f = open('goroda1.txt', 'w')
+                                f = open('resurses/goroda1.txt', 'w')
                                 f.write(r)
                                 f.close()
-                                os.remove(str(event.obj.peer_id) + '.txt')
+                                os.remove('resurses/goroda_files/'+str(event.obj.peer_id) + '.txt')
 
 
                         elif flaggorod2 is True and flaggorod3 is True:
@@ -516,7 +516,7 @@ def mainfunc():
                                 random_id=get_random_id(),
                                 message='Пользователь '+first_name+' '+last_name+' '+str(event.obj.peer_id)+'\nНаписал сообщение: '+text_osn
             )
-                        anssplit=open('baza3.txt','r')
+                        anssplit=open('resurses/baza3.txt','r')
                         for line in anssplit:
                             #print(event.obj.text,line.split('\\')[0])
                             if line.split('\\')[0]==event.obj.text:
@@ -525,7 +525,7 @@ def mainfunc():
                             else:
                                 response=None
                         anssplit.close()
-                        anssplit=open('baza3.txt','r')
+                        anssplit=open('resurses/baza3.txt','r')
                         if response==None:
                             #print(11)
                             for line in anssplit:
