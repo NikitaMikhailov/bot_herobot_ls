@@ -572,6 +572,7 @@ def mainfunc():
                 random_id=get_random_id(),
                 message='Возникла ошибка ' + str(err) + ' в главном цикле программы сообщений лс, цикл перезапущен\nНа сообщении пользователя: '+first_name+' '+last_name+'\nC текстом сообщения: '+event.obj.text
             )
+            goroscop1()
             mainfunc()
         except:
             print(err)
@@ -581,7 +582,8 @@ def mainfunc():
                 random_id=get_random_id(),
                 message='Возникла ошибка ' + str(err) + ' в главном цикле программы сообщений лс, цикл перезапущен\nОшибка без участия пользователя.'
             )
+            goroscop1()
             mainfunc()
 
-
+goroscop1()
 mainfunc()
