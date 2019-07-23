@@ -440,10 +440,11 @@ def mainfunc():
                                         '''
 
                                         response = google_images_download.googleimagesdownload()
-                                        arguments = {"keywords": "Москва", "limit": random.randint(1, 10), "no_download": True,
+                                        arguments = {"keywords": gorod.lower(), "limit": random.randint(1, 10), "no_download": True,
                                                      "print_urls": True}
                                         paths = response.download(arguments)
                                         file_url=open('file_url.txt','r')
+                                        print('файл успешно открыт')
                                         gh=0
                                         for line in f:
                                             if gh==0:
@@ -451,6 +452,7 @@ def mainfunc():
                                             gh+=1
                                         print(image_url)
                                         file_url.close()
+                                        image_url = image_url
                                         image = session.get(image_url, stream=True)
                                         photo = upload.photo_messages(photos=image.raw)[0]
                                         attachments.append('photo{}_{}'.format(photo['owner_id'], photo['id'])
@@ -467,7 +469,8 @@ def mainfunc():
                                             random_id=get_random_id(),
                                             message='Тебе на букву ' + posllet
                                         )
-                                    except:
+                                    except Exception as err:
+                                        print(err)
                                         vk.messages.send(
                                             user_id=event.obj.peer_id,
                                             random_id=get_random_id(),
