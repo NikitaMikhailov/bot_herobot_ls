@@ -3,7 +3,7 @@ from vk_api import VkUpload
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 from vk_api.keyboard import VkKeyboard, VkKeyboardColor
 import random, requests, vk_api, os, bs4
-from google-images-download import google_images_download
+from google_images_download import google_images_download
 from lxml import html
 import urllib.parse
 
