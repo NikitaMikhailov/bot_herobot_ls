@@ -446,7 +446,8 @@ def mainfunc():
                                         file_url=open('file_url.txt','r')
                                         print('файл успешно открыт')
                                         gh=0
-                                        for line in f:
+                                        for line in file_url:
+                                            print(line)
                                             if gh==0:
                                                 image_url=line
                                             gh+=1
