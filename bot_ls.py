@@ -3,6 +3,7 @@ from vk_api import VkUpload
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 from vk_api.keyboard import VkKeyboard, VkKeyboardColor
 import random, requests, vk_api, os, bs4
+from ggl_img_down import google_images_download
 from lxml import html
 import urllib.parse
 
@@ -428,6 +429,7 @@ def mainfunc():
                                             posllet = gorod[-2].upper()
                                         else:
                                             posllet = gorod[-1].upper()
+                                        '''
                                         response = requests.get(
                                             'https://ru.depositphotos.com/search/город&' + gorod.lower() + '&фото.html')
                                         parsed_body = html.fromstring(response.text)
@@ -435,10 +437,25 @@ def mainfunc():
                                         images = parsed_body.xpath('//img/@src')
                                         images = [urllib.parse.urljoin(response.url, url) for url in images]
                                         image_url = images[random.randint(0, len(images))]
+                                        '''
+
+                                        response = google_images_download.googleimagesdownload()
+                                        arguments = {"keywords": "Москва", "limit": random.randint(1, 10), "no_download": True,
+                                                     "print_urls": True}
+                                        paths = response.download(arguments)
+                                        file_url=open('file_url.txt','r')
+                                        gh=0
+                                        for line in f:
+                                            if gh==0:
+                                                image_url=line
+                                            gh+=1
+                                        print(image_url)
+                                        file_url.close()
                                         image = session.get(image_url, stream=True)
                                         photo = upload.photo_messages(photos=image.raw)[0]
                                         attachments.append('photo{}_{}'.format(photo['owner_id'], photo['id'])
                                                            )
+
                                         vk.messages.send(
                                             user_id=event.obj.peer_id,
                                             random_id=get_random_id(),
@@ -572,6 +589,7 @@ def mainfunc():
                 random_id=get_random_id(),
                 message='Возникла ошибка ' + str(err) + ' в главном цикле программы сообщений лс, цикл перезапущен\nНа сообщении пользователя: '+first_name+' '+last_name+'\nC текстом сообщения: '+event.obj.text
             )
+            goroscop1()
             mainfunc()
         except:
             print(err)
@@ -581,7 +599,8 @@ def mainfunc():
                 random_id=get_random_id(),
                 message='Возникла ошибка ' + str(err) + ' в главном цикле программы сообщений лс, цикл перезапущен\nОшибка без участия пользователя.'
             )
+            goroscop1()
             mainfunc()
 
-
+goroscop1()
 mainfunc()
