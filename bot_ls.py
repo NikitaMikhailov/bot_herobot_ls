@@ -344,7 +344,7 @@ def mainfunc():
                         f.close()
                         if flaggorod2 is True and flaggorod3 is not True and flaggorod5 is True:
                             f1 = open('resurses/goroda_files/'+str(event.obj.peer_id) + '.txt', 'a')
-                            f1.write('resurses/goroda_files/'+str(event.obj.text + '\n'))
+                            f1.write(str(event.obj.text + '\n'))
                             f1.close()
                             letter = str(event.obj.text[-1])
                             if letter == 'ь' or letter == 'ы' or letter == 'ъ':
