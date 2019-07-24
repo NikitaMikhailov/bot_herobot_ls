@@ -440,18 +440,18 @@ def mainfunc():
                                         '''
 
                                         response = google_images_download.googleimagesdownload()
-                                        arguments = {"keywords": 'город '+gorod.lower(), "size": 'medium', "limit": random.randint(1, 10), "no_download": True,
+                                        arguments = {"keywords": 'город '+event.obj.text.lower(), "size": 'medium', "limit": random.randint(1, 10), "no_download": True,
                                                      "print_urls": True}
                                         paths = response.download(arguments)
                                         file_url=open('file_url.txt','r')
-                                        print('файл успешно открыт')
+                                        #print('файл успешно открыт')
                                         gh=0
                                         for line in file_url:
-                                            print(line)
+                                            #print(line)
                                             if gh==0:
                                                 image_url=line
                                             gh+=1
-                                        print(image_url)
+                                        #print(image_url)
                                         file_url.close()
                                         image_url = image_url
                                         image = session.get(image_url, stream=True)
@@ -463,7 +463,7 @@ def mainfunc():
                                             user_id=event.obj.peer_id,
                                             random_id=get_random_id(),
                                             attachment=','.join(attachments),
-                                            message=gorod + '\nВот, кстати, фото этого места'
+                                            message=gorod + '\nВот, кстати, фото города '+event.obj.text.capitalize()+', который ты предложил.'
                                         )
                                         vk.messages.send(
                                             user_id=event.obj.peer_id,
