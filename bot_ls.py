@@ -374,6 +374,7 @@ def mainfunc():
                                 f1.close()
                                 ranom = random.randint(0, 4)
                                 if ranom == 0 or ranom == 4:
+                                    print('попал в описание')
                                     dlina = len(gorod)+1
                                     if gorod[-1] == 'ь' or gorod[-1] == 'ы' or gorod[-1] == 'ъ':
                                         posllet = gorod[-2].upper()
@@ -398,6 +399,7 @@ def mainfunc():
                                                 for r1 in range(0, ranom2):
                                                     gorod += text[r1] + '\n'
                                                 sluchay = random.randint(0, 4)
+                                                print("сформировал описание")
                                                 if sluchay == 0:
                                                     variants = ['Неплохой вариант, ' + first_name + '!', 'Окей, пойдёт',
                                                                 'Хороший город, ты молодец, ' + first_name + '!',
@@ -417,13 +419,16 @@ def mainfunc():
                                                     random_id=get_random_id(),
                                                     message='Тебе на букву ' + posllet
                                                 )
+                                                print("отправил описание")
                                             except:
+                                                print("с описанием проблемы, отправил просто город")
                                                 vk.messages.send(
                                                     user_id=event.obj.peer_id,
                                                     random_id=get_random_id(),
                                                     message=gorod
                                                 )
                                 if ranom == 1 or ranom == 3:
+                                    print("попал в картинку")
                                     try:
                                         if gorod[-1] == 'ь' or gorod[-1] == 'ы' or gorod[-1] == 'ъ':
                                             posllet = gorod[-2].upper()
@@ -458,6 +463,7 @@ def mainfunc():
                                         photo = upload.photo_messages(photos=image.raw)[0]
                                         attachments.append('photo{}_{}'.format(photo['owner_id'], photo['id'])
                                                            )
+                                        print("загрузил картинку")
 
                                         vk.messages.send(
                                             user_id=event.obj.peer_id,
@@ -470,8 +476,9 @@ def mainfunc():
                                             random_id=get_random_id(),
                                             message='Тебе на букву ' + posllet
                                         )
-                                    except Exception as err:
-                                        print(err)
+                                        print("отправил картинку")
+                                    except:
+                                        print("с картинкой проблемы, отправил чистый город")
                                         vk.messages.send(
                                             user_id=event.obj.peer_id,
                                             random_id=get_random_id(),
@@ -479,6 +486,7 @@ def mainfunc():
                                         )
 
                                 if ranom == 2:
+                                    print("попал просто в город")
                                     vk.messages.send(
                                         user_id=event.obj.peer_id,
                                         random_id=get_random_id(),
@@ -506,6 +514,7 @@ def mainfunc():
 
 
                         elif flaggorod2 is True and flaggorod3 is True:
+                            print("попал в повторение")
                             spisok1 = ['Либо я тебя неправильно понял, либо такой город уже был',
                                        'В нашей игре уже был такой город', 'Ты повторяешься, ' + first_name]
                             ran = random.randint(0, 2)
@@ -515,12 +524,14 @@ def mainfunc():
                                 message=spisok1[ran]
                             )
                         elif flaggorod2 is True and flaggorod5 is False:
+                            print("попал в неправильную букву")
                             vk.messages.send(
                                 user_id=event.obj.peer_id,
                                 random_id=get_random_id(),
                                 message='У твоего города неправильная первая буква'
                             )
                         else:
+                            print("попал в отсутствие")
                             spisok2 = ["Я не нашел такого города в своей базе", "Извини, но такого города нет",
                                        "Может ты и прав, но я такого города не знаю"]
                             ran = random.randint(0, 2)
