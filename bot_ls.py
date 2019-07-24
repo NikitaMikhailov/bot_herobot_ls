@@ -440,7 +440,7 @@ def mainfunc():
                                         '''
 
                                         response = google_images_download.googleimagesdownload()
-                                        arguments = {"keywords": gorod.lower(), "limit": random.randint(1, 10), "no_download": True,
+                                        arguments = {"keywords": 'город '+gorod.lower(), "size": 'medium', "limit": random.randint(1, 10), "no_download": True,
                                                      "print_urls": True}
                                         paths = response.download(arguments)
                                         file_url=open('file_url.txt','r')
