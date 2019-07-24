@@ -421,13 +421,13 @@ def mainfunc():
                                                     message='Тебе на букву ' + posllet
                                                 )
                                                 print("отправил описание")
-                                        except:
-                                            print("с описанием проблемы, отправил просто город")
-                                            vk.messages.send(
-                                                user_id=event.obj.peer_id,
-                                                random_id=get_random_id(),
-                                                message=gorod
-                                            )
+                                    except:
+                                        print("с описанием проблемы, отправил просто город")
+                                        vk.messages.send(
+                                            user_id=event.obj.peer_id,
+                                            random_id=get_random_id(),
+                                            message=gorod
+                                        )
                                 if ranom == 1 or ranom == 3:
                                     print("попал в картинку")
                                     try:
