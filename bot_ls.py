@@ -375,15 +375,16 @@ def mainfunc():
                                 ranom = random.randint(0, 4)
                                 if ranom == 0 or ranom == 4:
                                     print('попал в описание')
-                                    dlina = len(gorod)
-                                    if gorod[-1] == 'ь' or gorod[-1] == 'ы' or gorod[-1] == 'ъ':
-                                        posllet = gorod[-2].upper()
-                                    else:
-                                        posllet = gorod[-1].upper()
-                                    for linenum, line in enumerate(open('resurses/city2.txt', 'r')):
-                                        if line[:dlina:] == gorod:
-                                            link = line.split('|')
-                                            try:
+                                    try:
+                                        dlina = len(gorod)
+                                        if gorod[-1] == 'ь' or gorod[-1] == 'ы' or gorod[-1] == 'ъ':
+                                            posllet = gorod[-2].upper()
+                                        else:
+                                            posllet = gorod[-1].upper()
+                                        for linenum, line in enumerate(open('resurses/city2.txt', 'r')):
+                                            if line[:dlina:] == gorod:
+                                                link = line.split('|')
+                                            
                                                 if link[1].find('(') != -1 and link[1].find(')') != -1:
                                                     e1 = link[1].find('(')
                                                     e2 = link[1].find(')')
@@ -420,13 +421,13 @@ def mainfunc():
                                                     message='Тебе на букву ' + posllet
                                                 )
                                                 print("отправил описание")
-                                            except:
-                                                print("с описанием проблемы, отправил просто город")
-                                                vk.messages.send(
-                                                    user_id=event.obj.peer_id,
-                                                    random_id=get_random_id(),
-                                                    message=gorod
-                                                )
+                                        except:
+                                            print("с описанием проблемы, отправил просто город")
+                                            vk.messages.send(
+                                                user_id=event.obj.peer_id,
+                                                random_id=get_random_id(),
+                                                message=gorod
+                                            )
                                 if ranom == 1 or ranom == 3:
                                     print("попал в картинку")
                                     try:
