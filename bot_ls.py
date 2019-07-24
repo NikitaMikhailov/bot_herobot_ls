@@ -585,8 +585,6 @@ def mainfunc():
                                 )
 
     except Exception as err:
-        print(err)
-
         vk.messages.send(
             user_id=195310233,
             random_id=get_random_id(),
