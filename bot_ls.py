@@ -381,13 +381,13 @@ def mainfunc():
                                 if ranom == 0 or ranom == 4:
                                     print('попал в описание')
                                     try:
-                                        dlina = len(gorod)
+                                        dlina = len(gorod)+1
                                         if gorod[-1] == 'ь' or gorod[-1] == 'ы' or gorod[-1] == 'ъ':
                                             posllet = gorod[-2].upper()
                                         else:
                                             posllet = gorod[-1].upper()
                                         for linenum, line in enumerate(open('resurses/city2.txt', 'r')):
-                                            if line[:dlina:] == gorod:
+                                            if line[:dlina:] == gorod+'|':
                                                 link = line.split('|')
                                             
                                                 if link[1].find('(') != -1 and link[1].find(')') != -1:
