@@ -210,7 +210,7 @@ def mainfunc():
                         )
                     elif event.obj.text == 'бот факт':
                         cit = random.randint(0, 764)
-                        for linenum, line in enumerate(open('root/bot_herobot_chat/resurses/facts_clear.txt', 'r')):
+                        for linenum, line in enumerate(open('/root/bot_herobot_chat/resurses/facts_clear.txt', 'r')):
                             if linenum == cit:
                                 messagecit = (line.strip())
                         if messagecit[-1] == ',':
