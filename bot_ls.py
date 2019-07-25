@@ -206,9 +206,20 @@ def mainfunc():
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='Привет! В ЛС мне доступны следующие функции:\n1) Давай сыграем в города\n2) Бот, гороскоп\n3)Бот, кинь кубик N\nОстальное время я буду просто болтать с тобой, '+first_name
+                            message='Привет! В ЛС мне доступны следующие функции:\n1) Давай сыграем в города\n2) Бот, гороскоп\n3)Бот, кинь кубик ..\n4)Бот, факт\nОстальное время я буду просто болтать с тобой, '+first_name
                         )
-
+                    elif event.obj.text == 'бот факт':
+                        cit = random.randint(0, 764)
+                        for linenum, line in enumerate(open('root/bot_herobot_chat/resurses/facts_clear.txt', 'r')):
+                            if linenum == cit:
+                                messagecit = (line.strip())
+                        if messagecit[-1] == ',':
+                            messagecit = messagecit[:-1:]
+                        vk.messages.send(  # Отправляем собщение
+                            chat_id=event.chat_id,
+                            random_id=get_random_id(),
+                            message=str(messagecit)
+                        )
                     elif event.obj.text.find('бот кинь кубик') != -1:
                         kub = event.obj.text[15::]
                         try:
