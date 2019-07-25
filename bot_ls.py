@@ -187,7 +187,12 @@ def mainfunc():
                             random_id=get_random_id(),
                             message='Начинай, пиши первый город, я подхвачу'
                         )
-
+                    elif event.obj.text == 'начать':
+                        vk.messages.send(
+                            user_id=event.obj.peer_id,
+                            random_id=get_random_id(),
+                            message='Привет, меня зовут Херобот и я бот @id195310233(Никиты Михайлова) \nВ ЛС мне доступны следующие функции:\n1) Давай сыграем в города\n2) Бот, гороскоп\n3)Бот, кинь кубик N\nОстальное время я буду просто болтать с тобой, '+first_name
+                        )            
                     elif event.obj.text == 'обнови гороскоп' and event.obj.peer_id == 195310233:
                         goroscop1()
                         vk.messages.send(
