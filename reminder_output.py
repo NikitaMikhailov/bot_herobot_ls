@@ -27,4 +27,8 @@ try:
         sent_message(zametka[4].capitalize(),int(zametka[5]))
     f.close()
 except Exception as err:
-    sent_message('Возникла ошибка ' + str(err) + ' в напоминаниях ',195310233)
+    vk.messages.send(
+        user_id=195310233,
+        random_id=get_random_id(),
+        message='Возникла ошибка ' + str(err) + ' в главном цикле bot_herobot_chat'
+    )
