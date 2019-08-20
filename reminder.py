@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+#!/bin/bash
+#!/bin/sh
+#!/bin/sh -
 from vk_api import VkUpload
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 import random, requests, vk_api, os, bs4
@@ -14,8 +18,8 @@ longpoll = VkBotLongPoll(vk_session, '178949259')
 vk = vk_session.get_api()
 upload = VkUpload(vk_session)  # Для загрузки изображений
 
-file_zametki = open("zametki.txt", "w", encoding="utf8")
-file_zametki.close()
+#file_zametki = open("/root/bot_herobot_chat/resurses/zametki.txt", "w", encoding="utf8")
+#file_zametki.close()
 
 
 def sent_message(text, user_id):
@@ -76,7 +80,7 @@ for event in longpoll.listen():
                     if correct_time(time_start, True) is True:
                         date_start = [datetime.datetime.now().month, datetime.datetime.now().day]
                         time_start = time_start.split(':')
-                        file_zametki = open("zametki.txt", "a", encoding="utf8")
+                        file_zametki = open("/root/bot_herobot_chat/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[
                                                                          event.obj.text.find(' ', 16, -1) + 1::] + '\n')
@@ -99,7 +103,7 @@ for event in longpoll.listen():
                                 date_start[0] = 1
 
                         time_start = time_start.split(':')
-                        file_zametki = open("zametki.txt", "a", encoding="utf8")
+                        file_zametki = open("/root/bot_herobot_chat/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
@@ -125,7 +129,7 @@ for event in longpoll.listen():
                                 date_start[0] = 1
 
                         time_start = time_start.split(':')
-                        file_zametki = open("zametki.txt", "a", encoding="utf8")
+                        file_zametki = open("/root/bot_herobot_chat/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
@@ -152,7 +156,7 @@ for event in longpoll.listen():
                                 date_start[0] = 1
 
                         time_start = time_start.split(':')
-                        file_zametki = open("zametki.txt", "a", encoding="utf8")
+                        file_zametki = open("/root/bot_herobot_chat/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
@@ -178,7 +182,7 @@ for event in longpoll.listen():
                                 date_start[0] = 1
 
                         time_start = time_start.split(':')
-                        file_zametki = open("zametki.txt", "a", encoding="utf8")
+                        file_zametki = open("/root/bot_herobot_chat/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
@@ -197,7 +201,7 @@ for event in longpoll.listen():
                     if correct_time(time_start, True) is True:
                         date_start = [datetime.datetime.now().month, datetime.datetime.now().day]
                         time_start = time_start.split(':')
-                        file_zametki = open("zametki.txt", "a", encoding="utf8")
+                        file_zametki = open("/root/bot_herobot_chat/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
@@ -217,7 +221,7 @@ for event in longpoll.listen():
                     if correct_time(time_start, True) is True:
                         date_start = [datetime.datetime.now().month, datetime.datetime.now().day]
                         time_start = time_start.split(':')
-                        file_zametki = open("zametki.txt", "a", encoding="utf8")
+                        file_zametki = open("/root/bot_herobot_chat/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
@@ -236,7 +240,7 @@ for event in longpoll.listen():
                     if correct_time(time_start, True) is True:
                         date_start = [datetime.datetime.now().month, datetime.datetime.now().day]
                         time_start = time_start.split(':')
-                        file_zametki = open("zametki.txt", "a", encoding="utf8")
+                        file_zametki = open("/root/bot_herobot_chat/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
@@ -262,7 +266,7 @@ for event in longpoll.listen():
                                 else:
                                     date_start = date_start.split('.')
                                     time_start = time_start.split(':')
-                                    file_zametki = open("zametki.txt", "a", encoding="utf8")
+                                    file_zametki = open("/root/bot_herobot_chat/resurses/zametki.txt", "a", encoding="utf8")
                                     file_zametki.write(
                                         str(date_start[1]) + '***#***' + str(date_start[0]) + '***#***' + time_start[
                                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[
@@ -282,7 +286,7 @@ for event in longpoll.listen():
                             else:
                                 date_start = date_start.split('.')
                                 time_start = time_start.split(':')
-                                file_zametki = open("zametki.txt", "a", encoding="utf8")
+                                file_zametki = open("/root/bot_herobot_chat/resurses/zametki.txt", "a", encoding="utf8")
                                 file_zametki.write(
                                     str(date_start[1]) + '***#***' + str(date_start[0]) + '***#***' + time_start[
                                         0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
