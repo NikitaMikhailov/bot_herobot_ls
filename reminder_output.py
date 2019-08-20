@@ -22,7 +22,7 @@ try:
     for line in f:
         zametka=line.split('***#***')
     #print(zametka)
-    if line!='\n' and datetime.datetime.now().month==int(zametka[0]) and datetime.datetime.now().day==int(zametka[1]) and datetime.datetime.now().hour==int(zametka[2]) and datetime.datetime.now().minute==int(zametka[3])-1:
+    if line!='\n' and datetime.datetime.now().month==int(zametka[0]) and datetime.datetime.now().day==int(zametka[1]) and datetime.datetime.now().hour==int(zametka[2]) and datetime.datetime.now().minute==int(zametka[3]):
         sent_message('У меня есть для тебя напоминание:', int(zametka[5]))
         sent_message(zametka[4].capitalize(),int(zametka[5]))
     f.close()
