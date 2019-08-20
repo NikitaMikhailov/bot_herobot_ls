@@ -83,7 +83,7 @@ for event in longpoll.listen():
                         file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[
-                                                                         event.obj.text.find(' ', 16, -1) + 1::] + '\n')
+                                                                         event.obj.text.find(' ', 16, -1) + 1::] + '***#***' + str(event.obj.peer_id) + '***#***'  + '\n')
                         file_zametki.close()
                         text = "Напоминание с текстом: '" + event.obj.text[
                                                             event.obj.text.find(' ', 16, -1) + 1::] + "' в " + \
@@ -108,7 +108,7 @@ for event in longpoll.listen():
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " завтра в ") + 2,
-                                                                                                            -1) + 1::] + '\n')
+                                                                                                            -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
                         text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
                                                                                                11 + len(
@@ -134,7 +134,7 @@ for event in longpoll.listen():
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " завтра утром ") - 2,
-                                                                                                            -1) + 1::] + '\n')
+                                                                                                            -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
                         text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
                                                                                                11 + len(
@@ -161,7 +161,7 @@ for event in longpoll.listen():
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " завтра днем ") - 2,
-                                                                                                            -1) + 1::] + '\n')
+                                                                                                            -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
                         text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
                                                                                                11 + len(
@@ -187,7 +187,7 @@ for event in longpoll.listen():
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " завтра вечером ") - 2,
-                                                                                                            -1) + 1::] + '\n')
+                                                                                                            -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
                         text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
                                                                                                11 + len(
@@ -206,7 +206,7 @@ for event in longpoll.listen():
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " утром ") - 2,
-                                                                                                            -1) + 1::] + '\n')
+                                                                                                            -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
                         text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
                                                                                                11 + len(
@@ -226,7 +226,7 @@ for event in longpoll.listen():
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " днем ") - 2,
-                                                                                                            -1) + 1::] + '\n')
+                                                                                                            -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
                         text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
                                                                                                11 + len(
@@ -245,7 +245,7 @@ for event in longpoll.listen():
                             0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " вечером ") - 2,
-                                                                                                            -1) + 1::] + '\n')
+                                                                                                            -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
                         text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
                                                                                                11 + len(
@@ -273,7 +273,7 @@ for event in longpoll.listen():
                                                                                          event.obj.text.find(' ',
                                                                                                              event.obj.text.find(
                                                                                                                  ' в ') + 3,
-                                                                                                             -1) + 1::] + '\n')
+                                                                                                             -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                                     file_zametki.close()
                                     text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
                                                                                                            event.obj.text.find(
@@ -292,7 +292,7 @@ for event in longpoll.listen():
                                         0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
                                                                                                                         event.obj.text.find(
                                                                                                                             ' в ') + 3,
-                                                                                                                        -1) + 1::] + '\n')
+                                                                                                                        -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                                 file_zametki.close()
                                 text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
                                                                                                        event.obj.text.find(
