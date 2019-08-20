@@ -22,15 +22,9 @@ try:
     for line in f:
         zametka=line.split('***#***')
     #print(zametka)
-<<<<<<< HEAD
     if line!='\n' and datetime.datetime.now().month==int(zametka[0]) and datetime.datetime.now().day==int(zametka[1]) and datetime.datetime.now().hour==int(zametka[2]) and datetime.datetime.now().minute==int(zametka[3])-1:
         sent_message('У меня есть для тебя напоминание:', int(zametka[5]))
         sent_message(zametka[4].capitalize(),int(zametka[5]))
-f.close()
-=======
-        if line!='\n' and datetime.datetime.now().month==int(zametka[0]) and datetime.datetime.now().day==int(zametka[1]) and datetime.datetime.now().hour==int(zametka[2]) and datetime.datetime.now().minute==int(zametka[3]):
-            sent_message('У меня есть для тебя напоминание:', int(zametka[5]))
-            sent_message(zametka[4].capitalize(),int(zametka[5]))
+    f.close()
 except Exception as err:
-    sent_message('Возникла ошибка ' + str(err) + ' в напоминаниях',195310233)
->>>>>>> 26ad802a32219e483cd7c705a3360e6035eedd7e
+    sent_message('Возникла ошибка ' + str(err) + ' в напоминаниях ',195310233)
