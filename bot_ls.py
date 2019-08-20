@@ -247,6 +247,9 @@ def mainfunc():
                             keyboard=keyboardgor.get_keyboard(),
                             message='Воспользуйся клавиатурой'
                         )
+                    
+                    elif event.obj.text[:11:] == "напомни мне":
+                        continue
 
                     elif event.obj.text in dict8 and flaggoroscop is True:
                         zodiak = dict8[event.obj.text]
