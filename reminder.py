@@ -71,7 +71,7 @@ for event in longpoll.listen():
                 if event.obj.text == "напомни мне":
                     text = "Я могу помочь тебе не забывать важную информацию"
                     sent_message(text, event.obj.peer_id)
-                    text = "Формат команды:\n'напомни мне\n+\nв hh:mm\nзавтра в hh:mm\nзавтра утром/днем/вечером\nday.month в hh:mm\n+\nтекст напоминания.'"
+                    text = "Формат команды:\n'напомни мне\n+\nутром/днем/вечером\nв hh:mm\nзавтра в hh:mm\nзавтра утром/днем/вечером\nday.month в hh:mm\n+\nтекст напоминания.'"
                     sent_message(text, event.obj.peer_id)
 
                 elif event.obj.text[11:14:] == " в ":
@@ -305,11 +305,11 @@ for event in longpoll.listen():
                 else:
                     text = "Команда напоминания некорректна"
                     sent_message(text, event.obj.peer_id)
-                    text = "Формат команды:\n'напомни мне\n+\nв hh:mm\nзавтра в hh:mm\nзавтра утром/днем/вечером\nday.month в hh:mm\n+\nтекст напоминания.'"
+                    text = "Формат команды:\n'напомни мне\n+\nутром/днем/вечером\nв hh:mm\nзавтра в hh:mm\nзавтра утром/днем/вечером\nday.month в hh:mm\n+\nтекст напоминания.'"
                     sent_message(text, event.obj.peer_id)
 
             except:
                 text = "Команда напоминания некорректна"
                 sent_message(text, event.obj.peer_id)
-                text = "Формат команды:\n'напомни мне\n+\nв hh:mm\nзавтра в hh:mm\nзавтра утром/днем/вечером\nday.month в hh:mm\n+\nтекст напоминания.'"
+                text = "Формат команды:\n'напомни мне\n+\nутром/днем/вечером\nв hh:mm\nзавтра в hh:mm\nзавтра утром/днем/вечером\nday.month в hh:mm\n+\nтекст напоминания.'"
                 sent_message(text, event.obj.peer_id)
