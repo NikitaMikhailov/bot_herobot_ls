@@ -286,6 +286,16 @@ for event in longpoll.listen():
 
                 elif event.obj.text.split(' ')[2][0].isdigit():
                     date_start = event.obj.text.split(' ')[2]
+                    if len(event.obj.text.split(' '))<5 or event.obj.text.split(' ')[4][0].isdigit() is False:
+                        event.obj.text=event.obj.text.split(' ')
+                        event.obj.text.insert(3,'в')
+                        event.obj.text.insert(4, '06:00')
+                        input_text = input_text.split(' ')
+                        input_text.insert(3, 'в')
+                        input_text.insert(4, '06:00')
+
+                        input_text = ' '.join(input_text)
+                        event.obj.text=' '.join(event.obj.text)
                     time_start = event.obj.text.split(' ')[4]
                     if correct_time(time_start, False) is True:
                         if correct_date(date_start) is True:
