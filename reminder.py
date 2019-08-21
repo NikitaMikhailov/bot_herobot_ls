@@ -10,6 +10,9 @@ from vk_api.utils import get_random_id
 
 # сделать проверку при переходе на завтра в последний день месяца !!done
 # сделать проверку на правильную дату !!done
+# исправить регистр в напоминании
+# добавить возможность указывать время с точкой и без минут
+# добавить напоминания на год вперед и на какой-то конкретный год
 
 
 session = requests.Session()
@@ -41,9 +44,9 @@ def correct_date(date_start):
     if int(date_start.split('.')[1]) <= datetime.datetime.now().month and int(
             date_start.split('.')[0]) < datetime.datetime.now().day or int(
         date_start.split('.')[1]) < datetime.datetime.now().month:
-        text = 'Указанная дата меньше текущей'
+        text = 'Указанная дата меньше текущей, напоминание сработает только на следующий год'
         sent_message(text, event.obj.peer_id)
-        return False
+        return True
     return True
 
 
@@ -65,6 +68,7 @@ def correct_time(time_start, today_flag):
 for event in longpoll.listen():
     # print(event)
     if event.type == VkBotEventType.MESSAGE_NEW and event.obj.text and event.from_user:
+        input_text=event.obj.text
         event.obj.text = event.obj.text.lower()
         if event.obj.text[:11:] == "напомни мне":
             try:
@@ -82,11 +86,9 @@ for event in longpoll.listen():
                         time_start = time_start.split(':')
                         file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
-                            0] + '***#***' + time_start[1] + '***#***' + event.obj.text[
-                                                                         event.obj.text.find(' ', 16, -1) + 1::] + '***#***' + str(event.obj.peer_id) + '***#***'  + '\n')
+                            0] + '***#***' + time_start[1] + '***#***' + input_text[event.obj.text.find(' ', 16, -1) + 1::] + '***#***' + str(event.obj.peer_id) + '***#***'  + '\n')
                         file_zametki.close()
-                        text = "Напоминание с текстом: '" + event.obj.text[
-                                                            event.obj.text.find(' ', 16, -1) + 1::] + "' в " + \
+                        text = "Напоминание с текстом: '" + input_text[event.obj.text.find(' ', 16, -1) + 1::] + "' в " + \
                                time_start[0] + ':' + time_start[1] + " на сегодня создано."
                         sent_message(text, event.obj.peer_id)
 
@@ -105,12 +107,12 @@ for event in longpoll.listen():
                         time_start = time_start.split(':')
                         file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
-                            0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
+                            0] + '***#***' + time_start[1] + '***#***' + input_text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " завтра в ") + 2,
                                                                                                             -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
-                        text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
+                        text = "Напоминание с текстом: '" + input_text[event.obj.text.find(' ',
                                                                                                11 + len(
                                                                                                    " завтра в ") + 2,
                                                                                                -1) + 1::] + "' в " + \
@@ -131,12 +133,12 @@ for event in longpoll.listen():
                         time_start = time_start.split(':')
                         file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
-                            0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
+                            0] + '***#***' + time_start[1] + '***#***' + input_text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " завтра утром ") - 2,
                                                                                                             -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
-                        text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
+                        text = "Напоминание с текстом: '" + input_text[event.obj.text.find(' ',
                                                                                                11 + len(
                                                                                                    " завтра утром ") - 2,
                                                                                                -1) + 1::] + "' в " + \
@@ -158,12 +160,12 @@ for event in longpoll.listen():
                         time_start = time_start.split(':')
                         file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
-                            0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
+                            0] + '***#***' + time_start[1] + '***#***' + input_text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " завтра днем ") - 2,
                                                                                                             -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
-                        text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
+                        text = "Напоминание с текстом: '" + input_text[event.obj.text.find(' ',
                                                                                                11 + len(
                                                                                                    " завтра днем ") - 2,
                                                                                                -1) + 1::] + "' в " + \
@@ -184,12 +186,12 @@ for event in longpoll.listen():
                         time_start = time_start.split(':')
                         file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
-                            0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
+                            0] + '***#***' + time_start[1] + '***#***' + input_text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " завтра вечером ") - 2,
                                                                                                             -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
-                        text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
+                        text = "Напоминание с текстом: '" + input_text[event.obj.text.find(' ',
                                                                                                11 + len(
                                                                                                    " завтра вечером ") - 2,
                                                                                                -1) + 1::] + "' в " + \
@@ -203,12 +205,12 @@ for event in longpoll.listen():
                         time_start = time_start.split(':')
                         file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
-                            0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
+                            0] + '***#***' + time_start[1] + '***#***' + input_text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " утром ") - 2,
                                                                                                             -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
-                        text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
+                        text = "Напоминание с текстом: '" + input_text[event.obj.text.find(' ',
                                                                                                11 + len(
                                                                                                    " утром ") - 2,
                                                                                                -1) + 1::] + "' в " + \
@@ -223,12 +225,12 @@ for event in longpoll.listen():
                         time_start = time_start.split(':')
                         file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
-                            0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
+                            0] + '***#***' + time_start[1] + '***#***' + input_text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " днем ") - 2,
                                                                                                             -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
-                        text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
+                        text = "Напоминание с текстом: '" + input_text[event.obj.text.find(' ',
                                                                                                11 + len(
                                                                                                    " днем ") - 2,
                                                                                                -1) + 1::] + "' в " + \
@@ -242,12 +244,12 @@ for event in longpoll.listen():
                         time_start = time_start.split(':')
                         file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
-                            0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
+                            0] + '***#***' + time_start[1] + '***#***' + input_text[event.obj.text.find(' ',
                                                                                                             11 + len(
                                                                                                                 " вечером ") - 2,
                                                                                                             -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                         file_zametki.close()
-                        text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
+                        text = "Напоминание с текстом: '" + input_text[event.obj.text.find(' ',
                                                                                                11 + len(
                                                                                                    " вечером ") - 2,
                                                                                                -1) + 1::] + "' в " + \
@@ -269,13 +271,13 @@ for event in longpoll.listen():
                                     file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                                     file_zametki.write(
                                         str(date_start[1]) + '***#***' + str(date_start[0]) + '***#***' + time_start[
-                                            0] + '***#***' + time_start[1] + '***#***' + event.obj.text[
+                                            0] + '***#***' + time_start[1] + '***#***' + input_text[
                                                                                          event.obj.text.find(' ',
                                                                                                              event.obj.text.find(
                                                                                                                  ' в ') + 3,
                                                                                                              -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                                     file_zametki.close()
-                                    text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
+                                    text = "Напоминание с текстом: '" + input_text[event.obj.text.find(' ',
                                                                                                            event.obj.text.find(
                                                                                                                ' в ') + 3,
                                                                                                            -1) + 1::] + "' в " + \
@@ -289,12 +291,12 @@ for event in longpoll.listen():
                                 file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                                 file_zametki.write(
                                     str(date_start[1]) + '***#***' + str(date_start[0]) + '***#***' + time_start[
-                                        0] + '***#***' + time_start[1] + '***#***' + event.obj.text[event.obj.text.find(' ',
+                                        0] + '***#***' + time_start[1] + '***#***' + input_text[event.obj.text.find(' ',
                                                                                                                         event.obj.text.find(
                                                                                                                             ' в ') + 3,
                                                                                                                         -1) + 1::]  + '***#***' + str(event.obj.peer_id) + '***#***' + '\n')
                                 file_zametki.close()
-                                text = "Напоминание с текстом: '" + event.obj.text[event.obj.text.find(' ',
+                                text = "Напоминание с текстом: '" + input_text[event.obj.text.find(' ',
                                                                                                        event.obj.text.find(
                                                                                                            ' в ') + 3,
                                                                                                        -1) + 1::] + "' в " + \
