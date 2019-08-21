@@ -17,6 +17,7 @@ def sent_message(text, user_id):
         message=text
     )
 try:
+    spisok=[]
 #/root/bot_herobot_ls/resurses/
     f=open('/root/bot_herobot_ls/resurses/zametki.txt',encoding='utf8')
     for line in f:
@@ -25,10 +26,13 @@ try:
         if line!='\n' and datetime.datetime.now().month==int(zametka[0]) and datetime.datetime.now().day==int(zametka[1]) and datetime.datetime.now().hour==int(zametka[2]) and datetime.datetime.now().minute==int(zametka[3]):
             sent_message('У меня есть для тебя напоминание:', int(zametka[5]))
             sent_message(zametka[4].capitalize(),int(zametka[5]))
+        else:
+            spisok.append(line)
     f.close()
+    
+    f=open('/root/bot_herobot_ls/resurses/zametki.txt','w',encoding='utf8')
+    f.write(spisok)
+    f.close()
+    
 except Exception as err:
-    vk.messages.send(
-        user_id=195310233,
-        random_id=get_random_id(),
-        message='Возникла ошибка ' + str(err) + ' в главном цикле bot_herobot_chat'
-    )
+    sent_message('Возникла ошибка ' + str(err) + ' в главном цикле bot_herobot_chat',195310233)
