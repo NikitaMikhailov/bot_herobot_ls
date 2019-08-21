@@ -59,11 +59,9 @@ def correct_date(date_start):
 
 
 def correct_time(time_start, today_flag):
-    tm_st = time_start.split(':')
-    if len(tm_st) < 2:
-        time_start = time_start.split('.')
-    else:
-        time_start = tm_st
+
+    time_start = refactor_time_start(time_start)
+
     if int(time_start[0]) < 0 or int(time_start[0]) > 23 or int(
             time_start[1]) < 0 or int(time_start[1]) > 59:
         text = 'Время задано некорректно'
@@ -75,6 +73,7 @@ def correct_time(time_start, today_flag):
         text = 'Указанное время меньше текущего'
         sent_message(text, event.obj.peer_id)
         return False
+
     return True
 
 
