@@ -2,3 +2,6 @@
 logs_ls.txt
 bot_ls.out.log
 bot_ls.err.log
+bot_reminder_input.err.log
+bot_reminder_input.out.log
+file_url.txt
