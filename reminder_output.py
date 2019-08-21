@@ -31,8 +31,8 @@ try:
     f.close()
     
     f=open('/root/bot_herobot_ls/resurses/zametki.txt','w',encoding='utf8')
-    f.write(spisok)
+    f.write(''.join(spisok))
     f.close()
     
 except Exception as err:
-    sent_message('Возникла ошибка ' + str(err) + ' в главном цикле bot_herobot_chat',195310233)
+    sent_message('Возникла ошибка ' + str(err) + ' в главном цикле reminder_output',195310233)
