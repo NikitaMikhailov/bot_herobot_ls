@@ -13,6 +13,7 @@ from vk_api.utils import get_random_id
 # исправить регистр в  напоминании  !!done
 # добавить возможность указывать время с точкой и без минут
 # добавить напоминания на год вперед !!done и на какой-то конкретный год
+# добавить написание месяца словом
 
 
 session = requests.Session()
@@ -52,13 +53,21 @@ def correct_date(date_start):
 
 
 def correct_time(time_start, today_flag):
-    if int(time_start.split(':')[0]) < 0 or int(time_start.split(':')[0]) > 23 or int(
-            time_start.split(':')[1]) < 0 or int(time_start.split(':')[1]) > 59:
+    try:
+        try:
+            time_start = time_start.split(':')
+        except:
+            time_start = time_start.split('.')
+    except:
+        sent_message("Время задано некорректно",event.obj.peer_id)
+        return False
+    if int(time_start[0]) < 0 or int(time_start[0]) > 23 or int(
+            time_start[1]) < 0 or int(time_start[1]) > 59:
         text = 'Время задано некорректно'
         sent_message(text, event.obj.peer_id)
         return False
-    if today_flag is True and datetime.time(int(time_start.split(':')[0]),
-                                            int(time_start.split(':')[1])) <= datetime.time(
+    if today_flag is True and datetime.time(int(time_start[0]),
+                                            int(time_start[1])) <= datetime.time(
         datetime.datetime.now().hour, datetime.datetime.now().minute):
         text = 'Указанное время меньше текущего'
         sent_message(text, event.obj.peer_id)
@@ -84,7 +93,12 @@ for event in longpoll.listen():
                     # print(time_start)
                     if correct_time(time_start, True) is True:
                         date_start = [datetime.datetime.now().month, datetime.datetime.now().day]
-                        time_start = time_start.split(':')
+                        
+                        try:
+                            time_start = time_start.split(':')
+                        except:
+                            time_start = time_start.split('.')
+                            
                         file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
                             0] + '***#***' + time_start[1] + '***#***' + input_text[event.obj.text.find(' ', 16,
@@ -108,7 +122,11 @@ for event in longpoll.listen():
                             if date_start[0] > 12:
                                 date_start[0] = 1
 
-                        time_start = time_start.split(':')
+                        try:
+                            time_start = time_start.split(':')
+                        except:
+                            time_start = time_start.split('.')
+                            
                         file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                         file_zametki.write(str(date_start[0]) + '***#***' + str(date_start[1]) + '***#***' + time_start[
                             0] + '***#***' + time_start[1] + '***#***' + input_text[event.obj.text.find(' ',
@@ -278,8 +296,13 @@ for event in longpoll.listen():
                                 if correct_time(time_start, True) is False:
                                     continue
                                 else:
+                                    
                                     date_start = date_start.split('.')
-                                    time_start = time_start.split(':')
+                                    try:
+                                        time_start = time_start.split(':')
+                                    except:
+                                        time_start = time_start.split('.')
+                                        
                                     file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a",
                                                         encoding="utf8")
                                     file_zametki.write(
@@ -301,7 +324,12 @@ for event in longpoll.listen():
                                     sent_message(text, event.obj.peer_id)
                             else:
                                 date_start = date_start.split('.')
-                                time_start = time_start.split(':')
+                                
+                                try:
+                                    time_start = time_start.split(':')
+                                except:
+                                    time_start = time_start.split('.')
+                                    
                                 file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "a", encoding="utf8")
                                 file_zametki.write(
                                     str(date_start[1]) + '***#***' + str(date_start[0]) + '***#***' + time_start[
