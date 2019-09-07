@@ -93,10 +93,10 @@ for event in longpoll.listen():
                     
                 elif event.obj.text == "напомни мне все" or event.obj.text == 'напомни мне всё':
                     f = open('/root/bot_herobot_ls/resurses/zametki.txt', encoding='utf8')
+                    text = 'Список твоих напоминаний\n'
                     for line in f:
-                        text = 'Список твоих напоминаний\n'
                         zametka = line.split('***#***')
-                        if zametka[5] == str(event.obj.peer_id):
+                        if zametka != ['\n'] and zametka[5] == str(event.obj.peer_id):
                             text += zametka[1]+'.'+zametka[0]+' на '+zametka[2]+':'+zametka[3]+' с текстом "' + zametka[4].capitalize()+'"\n'
                     if text == 'Список твоих напоминаний\n':
                         text = 'У тебя нет напоминаний'
