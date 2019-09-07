@@ -24,7 +24,7 @@ upload = VkUpload(vk_session)  # Для загрузки изображений
 
 # file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "w", encoding="utf8")
 # file_zametki.close()
-
+ 
 format_command = "Формат команды:\n'напомни мне\n+\nутром/днем/вечером\nв hh:mm\nзавтра в hh:mm\nзавтра утром/днем/вечером\nday.month\nday.month в hh:mm\n+\nтекст напоминания.'"
 uncorrect_comand = "Команда напоминания некорректна"
 
