@@ -25,7 +25,7 @@ upload = VkUpload(vk_session)  # Для загрузки изображений
 # file_zametki = open("/root/bot_herobot_ls/resurses/zametki.txt", "w", encoding="utf8")
 # file_zametki.close()
  
-format_command = "Формат команды:\n'напомни мне\n+\nутром/днем/вечером\nв hh:mm\nзавтра в hh:mm\nзавтра утром/днем/вечером\nday.month\nday.month в hh:mm\n+\nтекст напоминания.'"
+format_command = "Формат команды:\n'напомни мне\n+\nутром/днем/вечером\nв hh:mm\nзавтра в hh:mm\nзавтра утром/днем/вечером\nday.month\nday.month в hh:mm\n+\nтекст напоминания.'\nПросмотреть список напоминаний: 'напомни мне все'"
 uncorrect_comand = "Команда напоминания некорректна"
 
 def sent_message(text, user_id):
@@ -90,7 +90,19 @@ for event in longpoll.listen():
                     text = "Я могу помочь тебе не забывать важную информацию"
                     sent_message(text, event.obj.peer_id)
                     sent_message(format_command, event.obj.peer_id)
-
+                    
+                elif event.obj.text == "напомни мне все" or event.obj.text == 'напомни мне всё':
+                    f = open('/root/bot_herobot_ls/resurses/zametki.txt', encoding='utf8')
+                    for line in f:
+                        text = 'Список твоих напоминаний\n'
+                        zametka = line.split('***#***')
+                        if zametka[5] == str(event.obj.peer_id):
+                            text += zametka[1]+'.'+zametka[0]+' на '+zametka[2]+':'+zametka[3]+' с текстом "' + zametka[4].capitalize()+'"\n'
+                    if text == 'Список твоих напоминаний\n':
+                        text = 'У тебя нет напоминаний'
+                    sent_message(text, event.obj.peer_id)
+                    f.close()
+                    
                 elif event.obj.text[11:14:] == " в ":
                     time_start = event.obj.text.split(' ')[3]
                     if correct_time(time_start, True) is True:
