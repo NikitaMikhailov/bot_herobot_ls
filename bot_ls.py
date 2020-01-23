@@ -2,6 +2,7 @@
 #!/bin/bash
 #!/bin/sh
 #!/bin/sh -
+
 from vk_api.utils import get_random_id
 from vk_api import VkUpload
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
