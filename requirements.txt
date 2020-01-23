@@ -110,7 +110,7 @@ testpath==0.4.2
 tornado==6.0.2
 tqdm==4.23.4
 traitlets==4.3.2
-urllib3==1.23
+urllib3==1.24.2
 user-agent==0.1.9
 virtualenv==16.6.2
 vk==2.0.2
