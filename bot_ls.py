@@ -174,7 +174,7 @@ def mainfunc():
                             flaggorod1 = True
                     f.close()
 
-                    if event.obj.text == 'давай сыграем в города' and flaggorod1 != True:
+                    if event.obj.text == '!города' and flaggorod1 != True:
 
                         f = open('resurses/goroda1.txt', 'a')
                         f.write(str(event.obj.peer_id) + '\n')
@@ -185,7 +185,7 @@ def mainfunc():
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='Давай, ' + first_name + ', думаю, правила ты знаешь, если захочешь закончить игру-напиши "хватит играть"'
+                            message='Давай, ' + first_name + ', думаю, правила ты знаешь, если захочешь закончить игру-напиши "!хватит играть"'
                         )
                         vk.messages.send(
                             user_id=event.obj.peer_id,
@@ -196,9 +196,13 @@ def mainfunc():
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='Привет, меня зовут Херабот и я бот @id195310233(Никиты Михайлова) \nВ ЛС мне доступны следующие функции:\n1) Давай сыграем в города\n2) Бот, гороскоп\n3)Бот, кинь кубик ..\n4)Бот, факт\n5)Напомни мне\nОстальное время я буду просто болтать с тобой, '+first_name
+                            message='Привет, меня зовут Херабот и я бот @id195310233(Никиты Михайлова) \n'
+                                    'В ЛС мне доступны следующие функции:\n1) !города\n'
+                                    '2) !гороскоп\n3)!кубик ..\n4)!факт\n5)Напомни мне\n'
+                                    'Остальное время я буду просто болтать с тобой, '+first_name + ', но не обижайся, если невпопад, мой хозяин никак'
+                                                                                                   'не доделает нейронку'
                         )            
-                    elif event.obj.text == 'обнови гороскоп' and event.obj.peer_id == 195310233:
+                    elif event.obj.text == '!гороскоп' and event.obj.peer_id == 195310233:
                         goroscop1()
                         vk.messages.send(
                             user_id=event.obj.peer_id,
@@ -211,9 +215,12 @@ def mainfunc():
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='Привет! В ЛС мне доступны следующие функции:\n1) Давай сыграем в города\n2) Бот, гороскоп\n3)Бот, кинь кубик ..\n4)Бот, факт\n5)Напомни мне\nОстальное время я буду просто болтать с тобой, '+first_name
+                            message='Привет! В ЛС мне доступны следующие функции:\n1) Давай сыграем в города\n'
+                                    '2) !гороскоп\n3)!кубик ..\n4)!факт\n5)Напомни мне\n'
+                                    'Остальное время я буду просто болтать с тобой, '+first_name + ', но не обижайся, если невпопад, мой хозяин никак'
+                                                                                                   'не доделает нейронку'
                         )
-                    elif event.obj.text == 'бот факт':
+                    elif event.obj.text == '!факт':
                         cit = random.randint(0, 764)
                         for linenum, line in enumerate(open('/root/bot_herobot_chat/resurses/facts_clear.txt', 'r')):
                             if linenum == cit:
@@ -225,8 +232,8 @@ def mainfunc():
                             random_id=get_random_id(),
                             message=str(messagecit)
                         )
-                    elif event.obj.text.find('бот кинь кубик') != -1:
-                        kub = event.obj.text[15::]
+                    elif event.obj.text.find('!кубик') != -1:
+                        kub = event.obj.text[7::]
                         try:
                             vk.messages.send(  # Отправляем собщение
                                 user_id=event.obj.peer_id,
@@ -240,7 +247,7 @@ def mainfunc():
                                 message='С твоим числом что-то не так'
                             )
 
-                    elif event.obj.text == 'бот гороскоп':
+                    elif event.obj.text == '!гороскоп':
                         flaggoroscop=True
                         vk.messages.send(
                             user_id=event.obj.peer_id,
@@ -264,7 +271,7 @@ def mainfunc():
                             message=goroskp
                         )
 
-                    elif event.obj.text == 'убери гороскоп' and flaggoroscop is True:
+                    elif (event.obj.text == '!убери гороскоп' or event.obj.text == 'убери гороскоп') and flaggoroscop is True:
                         flaggoroscop = False
                         vk.messages.send(  # Отправляем собщение
                             user_id=event.obj.peer_id,
@@ -280,7 +287,7 @@ def mainfunc():
                         sentLS(text,user)
 
 
-                    elif event.obj.text == 'давай сыграем в города' and flaggorod1 == True:
+                    elif event.obj.text == '!города' and flaggorod1 == True:
 
                         vk.messages.send(
                             user_id=event.obj.peer_id,
@@ -288,7 +295,7 @@ def mainfunc():
                             message='Так мы уже играем, ' + first_name
                         )
 
-                    elif event.obj.text == 'хватит играть' and flaggorod1 == True:
+                    elif event.obj.text == '!хватит играть' and flaggorod1 == True:
 
                         try:
                             os.remove(str(event.obj.peer_id) + '.txt')
@@ -325,7 +332,7 @@ def mainfunc():
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='Если захочешь ещё поиграть-просто напиши мне "Давай сыграем в города"'
+                            message='Если захочешь ещё поиграть-просто напиши мне "!города"'
                         )
 
 
