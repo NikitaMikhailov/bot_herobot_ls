@@ -110,6 +110,13 @@ keyboardgor.add_button('Водолей', color=VkKeyboardColor.PRIMARY)
 keyboardgor.add_button('Рыбы', color=VkKeyboardColor.PRIMARY)
 keyboardgor.add_line()  # Переход на вторую строку
 keyboardgor.add_button('Убери гороскоп', color=VkKeyboardColor.NEGATIVE)
+
+keyboardosn = VkKeyboard(one_time=False)
+keyboardosn.add_button('Мысль', color=VkKeyboardColor.PRIMARY)
+keyboardosn.add_button('Цитата', color=VkKeyboardColor.PRIMARY)
+keyboardosn.add_button('Факт', color=VkKeyboardColor.PRIMARY)
+#keyboardosn.add_line()  # Переход на вторую строку
+
 '''
 print(keyboardgor.get_keyboard())
 vk.messages.send(
@@ -198,7 +205,7 @@ def mainfunc():
                             random_id=get_random_id(),
                             message='Привет, меня зовут Херабот и я бот @id195310233(Никиты Михайлова) \n'
                                     'В ЛС мне доступны следующие функции:\n1) !города\n'
-                                    '2) !гороскоп\n3) !кубик ..\n4) !факт\n5) !цитата\n6) !мысль\n7) Напомни мне\n'
+                                    '2) !гороскоп\n3) !кубик ..\n4) !факт\n5) !цитата\n6) !мысль\n7) !клавиатура вкл/выкл\n8) Напомни мне\n'
                                     'Остальное время я буду просто болтать с тобой, '+first_name + ', но не обижайся, если невпопад, мой хозяин никак '
                                                                                                    'не доделает нейронку'
                         )            
@@ -216,11 +223,11 @@ def mainfunc():
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
                             message='Привет! В ЛС мне доступны следующие функции:\n1) !города\n'
-                                    '2) !гороскоп\n3) !кубик ..\n4) !факт\n5) !цитата\n6) !мысль\n7) Напомни мне\n'
+                                    '2) !гороскоп\n3) !кубик ..\n4) !факт\n5) !цитата\n6) !мысль\n7) !клавиатура вкл/выкл\n8) Напомни мне\n'
                                     'Остальное время я буду просто болтать с тобой, '+first_name + ', но не обижайся, если невпопад, мой хозяин никак '
                                                                                                    'не доделает нейронку'
                         )
-                    elif event.obj.text == '!факт':
+                    elif event.obj.text == '!факт' or event.obj.text == 'факт':
                         cit = random.randint(0, 764)
                         for linenum, line in enumerate(open('/root/bot_herobot_chat/resurses/facts_clear.txt', 'r')):
                             if linenum == cit:
@@ -233,7 +240,7 @@ def mainfunc():
                             message=str(messagecit)
                         )
 
-                    elif event.obj.text == '!мысль':
+                    elif event.obj.text == '!мысль' or event.obj.text == 'мысль':
                         cit = random.randint(0, 1355)
                         for linenum, line in enumerate(open('/root/bot_herobot_chat/resurses/quotes_clear.txt', 'r')):
                             if linenum == cit:
@@ -247,7 +254,7 @@ def mainfunc():
 
                         )
 
-                    elif event.obj.text == '!цитата':
+                    elif event.obj.text == '!цитата' or event.obj.text == 'цитата':
                         cit = random.randint(0, 1391)
                         for linenum, line in enumerate(open('/root/bot_herobot_chat/resurses/twtrr.txt', 'r')):
                             if linenum == cit:
@@ -259,7 +266,7 @@ def mainfunc():
                             random_id=get_random_id(),
                             message=str(messagecit)
                         )
-                        
+
                     elif event.obj.text.find('!кубик') != -1:
                         kub = event.obj.text[7::]
                         try:
@@ -300,6 +307,20 @@ def mainfunc():
                             message=goroskp
                         )
 
+                    elif (event.obj.text == '!клавиатура вкл' or event.obj.text == 'клавиатура вкл'):
+                        vk.messages.send(  # Отправляем собщение
+                            user_id=event.obj.peer_id,
+                            random_id=get_random_id(),
+                            keyboard=keyboardosn.get_keyboard(),
+                            message="Окей, "+first_name
+                        )
+                    elif (event.obj.text == '!клавиатура выкл' or event.obj.text == 'клавиатура выкл'):
+                        vk.messages.send(  # Отправляем собщение
+                            user_id=event.obj.peer_id,
+                            random_id=get_random_id(),
+                            keyboard=keyboardosn.get_empty_keyboard(),
+                            message="Окей, "+first_name
+                        )
                     elif (event.obj.text == '!убери гороскоп' or event.obj.text == 'убери гороскоп') and flaggoroscop is True:
                         flaggoroscop = False
                         vk.messages.send(  # Отправляем собщение
@@ -308,13 +329,6 @@ def mainfunc():
                             keyboard=keyboardgor.get_empty_keyboard(),
                             message="Окей, "+first_name
                         )
-
-                    elif event.obj.peer_id==195310233 and event.obj.text[:6:]=='напиши':
-                        textz=text_osn.split(' ')
-                        text=str(' '.join(textz[2::]))
-                        user=textz[1]
-                        sentLS(text,user)
-
 
                     elif event.obj.text == '!города' and flaggorod1 == True:
 
@@ -603,12 +617,6 @@ def mainfunc():
                             )
 
                     else:
-                        if event.obj.peer_id!=195310233:
-                            vk.messages.send(
-                                user_id=195310233,
-                                random_id=get_random_id(),
-                                message='Пользователь '+first_name+' '+last_name+' '+str(event.obj.peer_id)+'\nНаписал сообщение: '+text_osn
-            )
                         anssplit=open('resurses/baza3.txt','r')
                         for line in anssplit:
                             #print(event.obj.text,line.split('\\')[0])
