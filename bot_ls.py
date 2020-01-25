@@ -202,7 +202,7 @@ def mainfunc():
                                     'Остальное время я буду просто болтать с тобой, '+first_name + ', но не обижайся, если невпопад, мой хозяин никак'
                                                                                                    'не доделает нейронку'
                         )            
-                    elif event.obj.text == '!гороскоп' and event.obj.peer_id == 195310233:
+                    elif event.obj.text == '!обнови гороскоп' and event.obj.peer_id == 195310233:
                         goroscop1()
                         vk.messages.send(
                             user_id=event.obj.peer_id,
