@@ -146,7 +146,7 @@ def mainfunc():
                 event.obj.text = event.obj.text.lower();
                 evtxt = ''
                 for i in range(0, len(event.obj.text)):
-                    if not event.obj.text[i] in dict:
+                    if not event.obj.text[i] in dict or (i == 0 and event.obj.text[i] == '!'):
                         evtxt += event.obj.text[i]
                 if evtxt == '':
                     event.obj.text = event.obj.text
@@ -185,7 +185,7 @@ def mainfunc():
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='Давай, ' + first_name + ', думаю, правила ты знаешь, если захочешь закончить игру-напиши "!хватит играть"'
+                            message='Давай сыграем, ' + first_name + ', думаю, правила ты знаешь, если захочешь закончить игру-напиши "!хватит играть"'
                         )
                         vk.messages.send(
                             user_id=event.obj.peer_id,
@@ -210,12 +210,12 @@ def mainfunc():
                             message='обновил'
                         )
 
-                    elif event.obj.text == 'бот что ты умеешь':
+                    elif event.obj.text == '!хелп' or event.obj.text == '!помощь' or event.obj.text == '!help':
 
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='Привет! В ЛС мне доступны следующие функции:\n1) Давай сыграем в города\n'
+                            message='Привет! В ЛС мне доступны следующие функции:\n1) !города\n'
                                     '2) !гороскоп\n3)!кубик ..\n4)!факт\n5)Напомни мне\n'
                                     'Остальное время я буду просто болтать с тобой, '+first_name + ', но не обижайся, если невпопад, мой хозяин никак'
                                                                                                    'не доделает нейронку'
@@ -248,6 +248,7 @@ def mainfunc():
                             )
 
                     elif event.obj.text == '!гороскоп':
+                        print(1223)
                         flaggoroscop=True
                         vk.messages.send(
                             user_id=event.obj.peer_id,
