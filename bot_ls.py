@@ -115,7 +115,9 @@ keyboardosn = VkKeyboard(one_time=False)
 keyboardosn.add_button('Мысль', color=VkKeyboardColor.PRIMARY)
 keyboardosn.add_button('Цитата', color=VkKeyboardColor.PRIMARY)
 keyboardosn.add_button('Факт', color=VkKeyboardColor.PRIMARY)
+keyboardosn.add_button('Анекдот', color=VkKeyboardColor.PRIMARY)
 #keyboardosn.add_line()  # Переход на вторую строку
+#keyboardosn.add_button('Анекдот', color=VkKeyboardColor.PRIMARY)
 
 '''
 print(keyboardgor.get_keyboard())
@@ -205,7 +207,7 @@ def mainfunc():
                             random_id=get_random_id(),
                             message='Привет, меня зовут Херабот и я бот @id195310233(Никиты Михайлова) \n'
                                     'В ЛС мне доступны следующие функции:\n1) !города\n'
-                                    '2) !гороскоп\n3) !кубик ..\n4) !факт\n5) !цитата\n6) !мысль\n7) !клавиатура вкл/выкл\n8) Напомни мне\n'
+                                    '2) !гороскоп\n3) !кубик ..\n4) !факт\n5) !цитата\n6) !мысль\n7) !клавиатура вкл/выкл\n8) !анекдот\n9) Напомни мне\n'
                                     'Остальное время я буду просто болтать с тобой, '+first_name + ', но не обижайся, если невпопад, мой хозяин никак '
                                                                                                    'не доделает нейронку'
                         )            
@@ -223,9 +225,19 @@ def mainfunc():
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
                             message='Привет! В ЛС мне доступны следующие функции:\n1) !города\n'
-                                    '2) !гороскоп\n3) !кубик ..\n4) !факт\n5) !цитата\n6) !мысль\n7) !клавиатура вкл/выкл\n8) Напомни мне\n'
+                                    '2) !гороскоп\n3) !кубик ..\n4) !факт\n5) !цитата\n6) !мысль\n7) !клавиатура вкл/выкл\n8) !анекдот\n9) Напомни мне\n'
                                     'Остальное время я буду просто болтать с тобой, '+first_name + ', но не обижайся, если невпопад, мой хозяин никак '
                                                                                                    'не доделает нейронку'
+                        )
+                    elif event.obj.text == '!анекдот' or event.obj.text == 'анекдот':
+                        anes = random.randint(0, 135500)
+                        for linenum, line in enumerate(open('/root/bot_herobot_chat/resurses/anec.txt', 'r')):
+                            if linenum == anes:
+                                anecdot = (line.strip()).replace('#', '\n')
+                        vk.messages.send(  # Отправляем собщение
+                            user_id=event.obj.peer_id,
+                            random_id=get_random_id(),
+                            message=anecdot
                         )
                     elif event.obj.text == '!факт' or event.obj.text == 'факт':
                         cit = random.randint(0, 764)
