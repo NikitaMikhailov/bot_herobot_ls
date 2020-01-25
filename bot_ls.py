@@ -240,7 +240,7 @@ def mainfunc():
                         if messagecit[-1] == ',':
                             messagecit = messagecit[:-1:]
                         vk.messages.send(  # Отправляем собщение
-                            chat_id=event.obj.peer_id,
+                            user_id=event.obj.peer_id,
                             random_id=get_random_id(),
                             message=str(messagecit)
                         )
