@@ -198,7 +198,7 @@ def mainfunc():
                             random_id=get_random_id(),
                             message='Привет, меня зовут Херабот и я бот @id195310233(Никиты Михайлова) \n'
                                     'В ЛС мне доступны следующие функции:\n1) !города\n'
-                                    '2) !гороскоп\n3)!кубик ..\n4)!факт\n5) !цитата\n6)Напомни мне\n'
+                                    '2) !гороскоп\n3) !кубик ..\n4) !факт\n5) !цитата\n6) !мысль\n7) Напомни мне\n'
                                     'Остальное время я буду просто болтать с тобой, '+first_name + ', но не обижайся, если невпопад, мой хозяин никак '
                                                                                                    'не доделает нейронку'
                         )            
@@ -216,7 +216,7 @@ def mainfunc():
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
                             message='Привет! В ЛС мне доступны следующие функции:\n1) !города\n'
-                                    '2) !гороскоп\n3)!кубик ..\n4)!факт\n5) !цитата\n6)Напомни мне\n'
+                                    '2) !гороскоп\n3) !кубик ..\n4) !факт\n5) !цитата\n6) !мысль\n7) Напомни мне\n'
                                     'Остальное время я буду просто болтать с тобой, '+first_name + ', но не обижайся, если невпопад, мой хозяин никак '
                                                                                                    'не доделает нейронку'
                         )
@@ -232,6 +232,21 @@ def mainfunc():
                             random_id=get_random_id(),
                             message=str(messagecit)
                         )
+
+                    elif event.obj.text == '!мысль':
+                        cit = random.randint(0, 1355)
+                        for linenum, line in enumerate(open('/root/bot_herobot_chat/resurses/quotes_clear.txt', 'r')):
+                            if linenum == cit:
+                                messagecit = (line.strip())
+                        if messagecit[-1] == ',':
+                            messagecit = messagecit[:-1:]
+                        vk.messages.send(  # Отправляем собщение
+                            user_id=event.obj.peer_id,
+                            random_id=get_random_id(),
+                            message=str(messagecit)
+
+                        )
+
                     elif event.obj.text == '!цитата':
                         cit = random.randint(0, 1391)
                         for linenum, line in enumerate(open('/root/bot_herobot_chat/resurses/twtrr.txt', 'r')):
@@ -244,6 +259,7 @@ def mainfunc():
                             random_id=get_random_id(),
                             message=str(messagecit)
                         )
+                        
                     elif event.obj.text.find('!кубик') != -1:
                         kub = event.obj.text[7::]
                         try:
