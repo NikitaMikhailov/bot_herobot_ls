@@ -346,7 +346,7 @@ def mainfunc():
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
                             keyboard=keyboardosn.get_empty_keyboard(),
-                            message="Окей, "+first_name
+                            message="Окей, "+first_name+"."
                         )
                     elif (event.obj.text == '!убери гороскоп' or event.obj.text == 'убери гороскоп') and flaggoroscop is True:
                         flaggoroscop = False
@@ -354,7 +354,7 @@ def mainfunc():
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
                             keyboard=keyboardosn.get_keyboard(),
-                            message="Окей, "+first_name + "."
+                            message="Включена обычная клавиатура."
                         )
                         keyboardvkl = VkKeyboard(one_time=False, inline=True)
                         keyboardvkl.add_button('Выключить клавиатуру', color=VkKeyboardColor.NEGATIVE)
@@ -362,7 +362,7 @@ def mainfunc():
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
                             keyboard=keyboardvkl.get_keyboard(),
-                            message="Включена обычная клавиатура."
+                            message="Хочешь выключить её?"
                         )
 
                     elif event.obj.text == '!города' and flaggorod1 == True:
