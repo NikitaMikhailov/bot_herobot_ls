@@ -234,9 +234,12 @@ def mainfunc():
                         for linenum, line in enumerate(open('/root/bot_herobot_chat/resurses/anec.txt', 'r')):
                             if linenum == anes:
                                 anecdot = (line.strip()).replace('#', '\n')
+                        keyboardanec = VkKeyboard(one_time=False, inline=True)
+                        keyboardanec.add_button('Анекдот', color=VkKeyboardColor.PRIMARY)
                         vk.messages.send(  # Отправляем собщение
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
+                            keyboard=keyboardanec.get_keyboard(),
                             message=anecdot
                         )
                     elif event.obj.text == '!факт' or event.obj.text == 'факт':
@@ -246,9 +249,12 @@ def mainfunc():
                                 messagecit = (line.strip())
                         if messagecit[-1] == ',':
                             messagecit = messagecit[:-1:]
+                        keyboardfacts = VkKeyboard(one_time=False, inline=True)
+                        keyboardfacts.add_button('Факт', color=VkKeyboardColor.PRIMARY)
                         vk.messages.send(  # Отправляем собщение
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
+                            keyboard=keyboardfacts.get_keyboard(),
                             message=str(messagecit)
                         )
 
@@ -259,9 +265,12 @@ def mainfunc():
                                 messagecit = (line.strip())
                         if messagecit[-1] == ',':
                             messagecit = messagecit[:-1:]
+                        keyboardquotes = VkKeyboard(one_time=False, inline=True)
+                        keyboardquotes.add_button('Мысль', color=VkKeyboardColor.PRIMARY)
                         vk.messages.send(  # Отправляем собщение
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
+                            keyboard=keyboardquotes.get_keyboard(),
                             message=str(messagecit)
 
                         )
@@ -273,9 +282,12 @@ def mainfunc():
                                 messagecit = (line.strip())
                         if messagecit[-1] == ',':
                             messagecit = messagecit[:-1:]
+                        keyboardtwtrr = VkKeyboard(one_time=False, inline=True)
+                        keyboardtwtrr.add_button('Цитата', color=VkKeyboardColor.PRIMARY)
                         vk.messages.send(  # Отправляем собщение
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
+                            keyboard=keyboardtwtrr.get_keyboard(),
                             message=str(messagecit)
                         )
 
