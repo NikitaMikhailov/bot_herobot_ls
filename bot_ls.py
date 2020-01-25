@@ -353,8 +353,8 @@ def mainfunc():
                         vk.messages.send(  # Отправляем собщение
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            keyboard=keyboardgor.get_empty_keyboard(),
-                            message="Окей, "+first_name
+                            keyboard=keyboardosn.get_keyboard(),
+                            message="Окей, "+first_name + ", включена обычная клавиатура."
                         )
 
                     elif event.obj.text == '!города' and flaggorod1 == True:
