@@ -341,7 +341,7 @@ def mainfunc():
                             keyboard=keyboardosn.get_keyboard(),
                             message="Окей, "+first_name
                         )
-                    elif (event.obj.text == '!клавиатура выкл' or event.obj.text == 'клавиатура выкл'):
+                    elif (event.obj.text == '!клавиатура выкл' or event.obj.text == 'клавиатура выкл' or event.obj.text == 'выключить клавиатуру'):
                         vk.messages.send(  # Отправляем собщение
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
@@ -354,7 +354,15 @@ def mainfunc():
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
                             keyboard=keyboardosn.get_keyboard(),
-                            message="Окей, "+first_name + ", включена обычная клавиатура."
+                            message="Окей, "+first_name + "."
+                        )
+                        keyboardvkl = VkKeyboard(one_time=False, inline=True)
+                        keyboardvkl.add_button('Выключить клавиатуру', color=VkKeyboardColor.NEGATIVE)
+                        vk.messages.send(  # Отправляем собщение
+                            user_id=event.obj.peer_id,
+                            random_id=get_random_id(),
+                            keyboard=keyboardvkl.get_keyboard(),
+                            message="Включена обычная клавиатура."
                         )
 
                     elif event.obj.text == '!города' and flaggorod1 == True:
