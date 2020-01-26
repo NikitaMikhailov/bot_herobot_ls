@@ -194,12 +194,12 @@ def mainfunc():
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='Давай сыграем, ' + first_name + ', думаю, правила ты знаешь, если захочешь закончить игру-напиши "!хватит играть"'
+                            message='Давай сыграем, ' + first_name + ', думаю, правила ты знаешь, если захочешь закончить игру-напиши "!хватит играть"'+"."
                         )
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='Начинай, пиши первый город, я подхвачу'
+                            message='Начинай, пиши первый город, я подхвачу'+"."
                         )
                     elif event.obj.text == 'начать':
                         vk.messages.send(
@@ -218,7 +218,7 @@ def mainfunc():
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='обновил'
+                            message='обновил'+"."
                         )
 
                     elif event.obj.text == '!хелп' or event.obj.text == '!помощь' or event.obj.text == '!help':
@@ -300,13 +300,13 @@ def mainfunc():
                             vk.messages.send(  # Отправляем собщение
                                 user_id=event.obj.peer_id,
                                 random_id=get_random_id(),
-                                message='Выпало число ' + str(random.randint(1, int(kub)))
+                                message='Выпало число ' + str(random.randint(1, int(kub)))+"."
                             )
                         except:
                             vk.messages.send(  # Отправляем собщение
                                 user_id=event.obj.peer_id,
                                 random_id=get_random_id(),
-                                message='С твоим числом что-то не так'
+                                message='С твоим числом что-то не так'+"."
                             )
 
                     elif event.obj.text == '!гороскоп':
@@ -316,7 +316,7 @@ def mainfunc():
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
                             keyboard=keyboardgor.get_keyboard(),
-                            message='Воспользуйся клавиатурой'
+                            message='Воспользуйся клавиатурой'+"."
                         )
                     
                     elif event.obj.text[:11:] == "напомни мне":
@@ -339,7 +339,7 @@ def mainfunc():
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
                             keyboard=keyboardosn.get_keyboard(),
-                            message="Окей, "+first_name
+                            message="Окей, "+first_name+"."
                         )
                     elif (event.obj.text == '!клавиатура выкл' or event.obj.text == 'клавиатура выкл' or event.obj.text == 'выключить клавиатуру'):
                         vk.messages.send(  # Отправляем собщение
@@ -370,7 +370,7 @@ def mainfunc():
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='Так мы уже играем, ' + first_name
+                            message='Так мы уже играем, ' + first_name+'.'
                         )
 
                     elif event.obj.text == '!хватит играть' and flaggorod1 == True:
@@ -405,12 +405,12 @@ def mainfunc():
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='Как скажешь, ' + first_name
+                            message='Как скажешь, ' + first_name+'.'
                         )
                         vk.messages.send(
                             user_id=event.obj.peer_id,
                             random_id=get_random_id(),
-                            message='Если захочешь ещё поиграть-просто напиши мне "!города"'
+                            message='Если захочешь ещё поиграть-просто напиши мне "!города"'+'.'
                         )
 
 
@@ -505,15 +505,15 @@ def mainfunc():
                                                 ranom2 = random.randint(1, len(text) - 1)
                                                 if ranom2 > 3:
                                                     ranom2 = 3
-                                                gorod += '\nКстати, во что я знаю про этот город\n'
+                                                gorod += '\nКстати, во что я знаю про этот город\n'+'.'
                                                 for r1 in range(0, ranom2):
                                                     gorod += text[r1] + '\n'
                                                 sluchay = random.randint(0, 4)
                                                 print("сформировал описание")
                                                 if sluchay == 0:
-                                                    variants = ['Неплохой вариант, ' + first_name + '!', 'Окей, пойдёт',
+                                                    variants = ['Неплохой вариант, ' + first_name + '!', 'Окей, пойдёт.',
                                                                 'Хороший город, ты молодец, ' + first_name + '!',
-                                                                'Здорово, но я всё равно умнее тебя']
+                                                                'Здорово, но я всё равно умнее тебя.']
                                                     vk.messages.send(
                                                         user_id=event.obj.peer_id,
                                                         random_id=get_random_id(),
@@ -527,7 +527,7 @@ def mainfunc():
                                                 vk.messages.send(
                                                     user_id=event.obj.peer_id,
                                                     random_id=get_random_id(),
-                                                    message='Тебе на букву ' + posllet
+                                                    message='Тебе на букву ' + posllet+'.'
                                                 )
                                                 print("отправил описание")
                                     except:
@@ -584,7 +584,7 @@ def mainfunc():
                                         vk.messages.send(
                                             user_id=event.obj.peer_id,
                                             random_id=get_random_id(),
-                                            message='Тебе на букву ' + posllet
+                                            message='Тебе на букву ' + posllet+'.'
                                         )
                                         print("отправил картинку")
                                     except:
@@ -606,7 +606,7 @@ def mainfunc():
                                 vk.messages.send(
                                     user_id=event.obj.peer_id,
                                     random_id=get_random_id(),
-                                    message='ты меня победил, я больше не знаю городов'
+                                    message='ты меня победил, я больше не знаю городов.'
                                 )
 
                                 f = open('resurses/goroda1.txt', 'r')
@@ -625,8 +625,8 @@ def mainfunc():
 
                         elif flaggorod2 is True and flaggorod3 is True:
                             print("попал в повторение")
-                            spisok1 = ['Либо я тебя неправильно понял, либо такой город уже был',
-                                       'В нашей игре уже был такой город', 'Ты повторяешься, ' + first_name]
+                            spisok1 = ['Либо я тебя неправильно понял, либо такой город уже был.',
+                                       'В нашей игре уже был такой город.', 'Ты повторяешься, ' + first_name+'.']
                             ran = random.randint(0, 2)
                             vk.messages.send(
                                 user_id=event.obj.peer_id,
@@ -638,12 +638,12 @@ def mainfunc():
                             vk.messages.send(
                                 user_id=event.obj.peer_id,
                                 random_id=get_random_id(),
-                                message='У твоего города неправильная первая буква'
+                                message='У твоего города неправильная первая буква.'
                             )
                         else:
                             print("попал в отсутствие")
-                            spisok2 = ["Я не нашел такого города в своей базе", "Извини, но такого города нет",
-                                       "Может ты и прав, но я такого города не знаю"]
+                            spisok2 = ["Я не нашел такого города в своей базе.", "Извини, но такого города нет.",
+                                       "Может ты и прав, но я такого города не знаю."]
                             ran = random.randint(0, 2)
                             vk.messages.send(
                                 user_id=event.obj.peer_id,
@@ -696,14 +696,14 @@ def mainfunc():
                                 vk.messages.send(
                                     user_id=event.obj.peer_id,
                                     random_id=get_random_id(),
-                                    message='Я тупой как тапок, ' + first_name
+                                    message='Я тупой как тапок, ' + first_name+'.'
                                 )
 
     except Exception as err:
         vk.messages.send(
             user_id=195310233,
             random_id=get_random_id(),
-            message='Возникла ошибка ' + str(err) + ' в главном цикле bot_herobot_ls'
+            message='Возникла ошибка ' + str(err) + ' в главном цикле bot_herobot_ls.'
         )
         mainfunc()
 mainfunc()
