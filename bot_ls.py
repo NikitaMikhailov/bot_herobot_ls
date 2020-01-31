@@ -142,7 +142,7 @@ def sentLS(text,user):
         message=text
     )
 
-iscl=["легко", "сложно", "средне", "что это такое"]
+iscl=["легкое", "сложное", "среднее", "что это такое"]
 
 def mainfunc():
     flaggoroscop=True
