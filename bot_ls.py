@@ -142,6 +142,8 @@ def sentLS(text,user):
         message=text
     )
 
+iscl=["легко", "сложно", "средне", "что это такое"]
+
 def mainfunc():
     flaggoroscop=True
     attachments = []
@@ -164,7 +166,7 @@ def mainfunc():
 
 
                 # если сообщение получено от пользователя
-                if event.from_user:
+                if event.from_user and event.obj.text not in iscl:
                     fio = requests.get("https://api.vk.com/method/users.get?user_ids=" + str(
                         event.obj.peer_id) + "&fields=bdate&access_token=b78c719302827104f6346bd3b63df9edd8dee2ef58f84a4e1a4f108cb149fed5d2d53c795ae00ee69f419&v=5.92")
                     first_name = fio.text[14::].split(',')[1].split(':')[1][1:-1:]
