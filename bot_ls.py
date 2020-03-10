@@ -173,7 +173,7 @@ def mainfunc():
                 # если сообщение получено от пользователя
                 if event.from_user and event.obj.text not in iscl:
                     fio = requests.get("https://api.vk.com/method/users.get?user_ids=" + str(
-                        event.obj.peer_id) + "&fields=bdate&access_token=b78c719302827104f6346bd3b63df9edd8dee2ef58f84a4e1a4f108cb149fed5d2d53c795ae00ee69f419&v=5.92")
+                        event.obj.peer_id) + "&fields=bdate&access_token=2956d05b8c9adc4484a001badf6a58db1a8377e650be4fe6a2aefc1f6fe4db011f184e71dbf82dd3b96a9&v=5.92")
                     first_name = fio.text[14::].split(',')[1].split(':')[1][1:-1:]
                     last_name = fio.text[14::].split(',')[2].split(':')[1][1:-1:]
                     #print(last_name, ' ', first_name, ' ', event.obj.peer_id, ' ', event.obj.text)
