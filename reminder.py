@@ -16,7 +16,7 @@ from vk_api.utils import get_random_id
 
 
 session = requests.Session()
-vk_session = vk_api.VkApi(token='705c3fcc0cfb0bdcf449d510b3ec247f114169fefc6166dcdd6e0103c9149ed6348f60178513c0b4aadae')
+vk_session = vk_api.VkApi(token='2956d05b8c9adc4484a001badf6a58db1a8377e650be4fe6a2aefc1f6fe4db011f184e71dbf82dd3b96a9')
 longpoll = VkBotLongPoll(vk_session, '178949259')
 vk = vk_session.get_api()
 upload = VkUpload(vk_session)  # Для загрузки изображений
