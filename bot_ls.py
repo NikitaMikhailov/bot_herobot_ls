@@ -26,7 +26,7 @@ fltm1 = False
 fltm2 = False
 flaggoroscop=True
 session = requests.Session()
-vk_session = vk_api.VkApi(token='b78c719302827104f6346bd3b63df9edd8dee2ef58f84a4e1a4f108cb149fed5d2d53c795ae00ee69f419')
+vk_session = vk_api.VkApi(token='705c3fcc0cfb0bdcf449d510b3ec247f114169fefc6166dcdd6e0103c9149ed6348f60178513c0b4aadae')
 longpoll = VkBotLongPoll(vk_session, '178949259')
 vk = vk_session.get_api()
 upload = VkUpload(vk_session)  # Для загрузки изображений
