@@ -14,9 +14,12 @@ from vk_api.utils import get_random_id
 # добавить напоминания на год вперед !!done и на какой-то конкретный год
 # добавить написание месяца словом
 
+f=open('token.txt','r')
+token=f.read()
+f.close()
 
 session = requests.Session()
-vk_session = vk_api.VkApi(token='2956d05b8c9adc4484a001badf6a58db1a8377e650be4fe6a2aefc1f6fe4db011f184e71dbf82dd3b96a9')
+vk_session = vk_api.VkApi(token=token)
 longpoll = VkBotLongPoll(vk_session, '178949259')
 vk = vk_session.get_api()
 upload = VkUpload(vk_session)  # Для загрузки изображений
