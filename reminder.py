@@ -14,7 +14,7 @@ from vk_api.utils import get_random_id
 # добавить напоминания на год вперед !!done и на какой-то конкретный год
 # добавить написание месяца словом
 
-f=open('token.txt','r')
+f=open('/root/bot_herobot_chat/token.txt','r')
 token=f.read()
 f.close()
 
