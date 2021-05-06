@@ -28,7 +28,7 @@ entrypoints==0.3
 enum34==1.1.6
 flasgger==0.9.1
 Flask==1.0.2
-Flask-Cors==3.0.6
+Flask-Cors==3.0.9
 future==0.16.0
 fuzzywuzzy==0.16.0
 gensim==3.7.3
